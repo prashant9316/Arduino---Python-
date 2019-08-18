@@ -95,24 +95,6 @@ void loop()
             break;
         }
   }
-  /*a = bmp.readPressure() - cal - constant;
-  float t; ;
-  if(a>11)
-   {  Serial.println("Single knock detected!!");
-      if(flag == 0)
-        {flag = 1;
-         Serial.println(flag);
-         t = millis();
-         }
-       if((flag == 1)&&((millis()-t)<2000)&&((millis()-t)>100))
-         {flag = 0;
-           Serial.println(flag);
-           open_the_door();}
-       if((millis() - t)>2000&&(flag==1))
-          {flag = 0;
-           Serial.println(flag);}
-   }
- */ 
 }
 
 void callibrate()
