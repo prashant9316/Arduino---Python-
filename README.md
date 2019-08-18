@@ -1,5 +1,5 @@
 # Arduino---Python-
-This Project interfaces Arduino Uno using python to detect knocks and unlock gate if it detects desired faces using KNN  
+This Project interfaces Arduino Uno using python to detect knocks and unlock gate if it detects desired faces using KNN algorithm  
 We are going to interface the Arduino using the python serial library.  
 I have modified the pyduino library and some more functions usefull for this project.  
 You can directly import the class Arduino from this library and create a class as shown below:  
