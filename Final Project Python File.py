@@ -121,11 +121,8 @@ while True:
 
         #display name
         pred_name = names[int(out)]
-        cv2.putText(frame,pred_name,(x,y-10),cv2.FONT_HERSHEY_SIMPLEX,0.5,(0,255,0),2,cv2.LINE_AA)
-        cv2.rectangle(frame,(x,y),(x+w,y+h),(0,255,255),2)
-
+        
         if pred_name == 'Prashant Mishra':
-            cv2.putText(frame,'Detecting knock!!',(x,y+h+10),cv2.FONT_HERSHEY_SIMPLEX,0.5,(255,0,0),2,cv2.LINE_AA)
             print(pred_name,' detected')
             print('waiting for knock!!')
             go_arduino()
