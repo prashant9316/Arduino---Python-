@@ -8,16 +8,18 @@ import time
 try:
     arduino = Arduino('COM11',9600)
     print('Accessing Arduino!!')
+    try:
+        x = arduino.init_bmp()
+        print('Callibrated')
+        arduino.close()
+    except:
+        print('Unable to access BMP')
 except:
     print('Unable to access Port')
-    exit()
-try:
-    x = arduino.init_bmp()
-    if x == 10:
-        print('BMP180 Callibrated')
-except:
-    print('Unable to access BMP180!!')
-arduino.close()
+    print('Exiting in 5 seconds')
+    time.sleep(5)
+    exit(0)
+
 ###############
 
 ########## KNN CODE ###########
@@ -59,6 +61,7 @@ def go_arduino():
         arduino.close()
     except:
         print('Unable to access Arduino!!')
+    time.sleep(10)
 
     
 ####################################
@@ -123,31 +126,13 @@ while True:
 
         if pred_name == 'Prashant Mishra':
             cv2.putText(frame,'Detecting knock!!',(x,y+h+10),cv2.FONT_HERSHEY_SIMPLEX,0.5,(255,0,0),2,cv2.LINE_AA)
-            cv2.imshow("Faces",frame)
+            print(pred_name,' detected')
+            print('waiting for knock!!')
             go_arduino()
-    cv2.imshow("Faces",frame)
     if skip%50 == 0:
         print('.',end = '')
-    slip +=1
+    skip +=1
 
-
-
-    key_pressed = cv2.waitKey(1) & 0xFF
-    if key_pressed == ord('q'):
-        break
 
 cap.release()
 cv2.destroyAllWindows()
-
-
-def go_arduino():
-    arduino = Arduino('COM11',9600)
-    if arduino.knock() == 14:
-        printf('Door is opened now!!')
-    else :
-        printf('No knock detected!!')
-
-    time.sleep(10)
-        
-    
-    
